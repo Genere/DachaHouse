@@ -3,6 +3,8 @@ package ru.lks.dacha;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.lks.dacha.materials.Material;
+
 /**
  * Интерфейс для поддержания иерархии часть-целое. 
  * Паттерн Компоновщик
@@ -12,14 +14,15 @@ import java.util.List;
 
 public abstract class Building {
 	 
-	protected float height = 2.8f;
+	protected float height;
 	protected float thickness; //толщина
 	protected float length;
 	
 	protected Square square;//площадь
+	protected Material material; //материал, из которого изготовлена конструкция 
 	protected float weight;//вес
 	protected float volume;//объем
-	protected float density; //плотность
+
 	
 	protected float price;
 	
@@ -33,15 +36,32 @@ public abstract class Building {
 		this.length = lenght;
 	}
 	
+	public Building(float length, float thickness, float height){
+		this.length = length;
+		this.height = height;
+		this.thickness = thickness;
+	}
+	
 	public Building(Square square){
 		this.square = square;
 	}
 	
-	public abstract float calcPrice();
+	public Building(float lenght, float thickness, float height, Material material) {
+		this.length = length;
+		this.height = height;
+		this.thickness = thickness;
+		this.material = material;
+		
+		calcVolume();
+		calcWeight();
+		calcPrice();
+	}
+
+	protected abstract float calcPrice();
 	
-	public abstract float calcWeight();
+	protected abstract float calcWeight();
 	
-	public abstract float calcVolume();
+	protected abstract float calcVolume();
 
 	public float getPrice() {
 		return price;

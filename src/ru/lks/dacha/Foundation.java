@@ -1,5 +1,7 @@
 package ru.lks.dacha;
 
+import ru.lks.dacha.materials.Material;
+
 /**
  * фундамент дома
  * @author constantine
@@ -8,30 +10,35 @@ package ru.lks.dacha;
 
 public class Foundation extends Building{
 
-	public Foundation(float lenght) {
-		super(lenght);
-	}
 
+	/**
+	 * конструктор принимает длину, толщину, высоту и материал фундамента
+	 * @param lenght
+	 * @param thickness
+	 * @param height
+	 * @param material
+	 */
+	
+	public Foundation(float lenght, float thickness, float height, Material material) {
+		super(lenght, thickness, height, material);
+	}
+	
 	@Override
 	public float calcPrice() {
-		
-		price = 10;
-		
+		price = weight*material.getPrice();
 		return price;
 	}
 
 	@Override
 	public float calcVolume() {
 		volume = length*height*thickness;
-		return 0;
+		return volume;
 	}
 
 	@Override
 	public float calcWeight() {
-		calcVolume();
-		density = 0;
-		weight = volume*density;
-		return 0;
+		weight = volume*material.getDensity();
+		return weight;
 	}
 
 }

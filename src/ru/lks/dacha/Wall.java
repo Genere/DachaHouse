@@ -22,8 +22,7 @@ public class Wall extends Building {
 
 	@Override
 	public float calcWeight() {
-		density = 10;
-		weight = volume*density;
+		weight = volume*material.getDensity();
 		return 0;
 	}
 

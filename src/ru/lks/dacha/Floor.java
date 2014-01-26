@@ -26,8 +26,7 @@ public class Floor extends Building {
 	@Override
 	public float calcWeight() {
 		calcVolume();
-		density = 0;
-		weight = volume*density;
+		weight = volume*material.getDensity();
 		return 0;
 	}
 
