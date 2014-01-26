@@ -3,6 +3,7 @@ package ru.lks.dacha;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.lks.dacha.materials.Cement;
 import ru.lks.dacha.materials.Material;
 
 /**
@@ -34,24 +35,41 @@ public abstract class Building {
 	
 	public Building(float lenght){
 		this.length = lenght;
+		calcVolume();
+		calcWeight();
+		calcPrice();
 	}
 	
 	public Building(float length, float thickness, float height){
 		this.length = length;
 		this.height = height;
 		this.thickness = thickness;
+		calcVolume();
+		calcWeight();
+		calcPrice();
 	}
 	
 	public Building(Square square){
 		this.square = square;
+		calcVolume();
+		calcWeight();
+		calcPrice();
 	}
 	
-	public Building(float lenght, float thickness, float height, Material material) {
+	public Building(float length, float thickness, float height, Material material) {
 		this.length = length;
 		this.height = height;
 		this.thickness = thickness;
 		this.material = material;
 		
+		calcVolume();
+		calcWeight();
+		calcPrice();
+	}
+
+	public Building(Square square, Material material) {
+		this.square = square;
+		this.material = material;
 		calcVolume();
 		calcWeight();
 		calcPrice();
@@ -89,6 +107,12 @@ public abstract class Building {
 
 	public void addHouseUnits(Building unit){
 		houseUnits.add(unit);
+	}
+	
+	public void getBuildParameters(){
+		calcVolume();
+		calcWeight();
+		calcPrice();
 	}
 
 }

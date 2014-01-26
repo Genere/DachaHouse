@@ -1,13 +1,16 @@
 package ru.lks.dacha;
 
+import ru.lks.dacha.materials.Cement;
+
 public class Wall extends Building {
 	
-	public Wall(float lenght){
-		super(lenght);
+	
+	public Wall(float length){
+		super(length, 0.1f, 2.8f, new Cement(10,10));
 	}
 	
 	@Override
-	public float calcPrice() {
+	protected float calcPrice() {
 		
 		price = 10 + 25;
 		
@@ -15,15 +18,17 @@ public class Wall extends Building {
 	}
 
 	@Override
-	public float calcVolume() {
+	protected float calcVolume() {
 		volume = height*length*thickness;
 		return volume;
 	}
 
 	@Override
-	public float calcWeight() {
-		weight = volume*material.getDensity();
-		return 0;
+	protected float calcWeight() {
+		if(material != null) {
+			weight = volume*material.getDensity();	
+		}
+		return weight;
 	}
 
 }

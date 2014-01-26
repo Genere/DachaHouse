@@ -24,20 +24,22 @@ public class Foundation extends Building{
 	}
 	
 	@Override
-	public float calcPrice() {
+	protected float calcPrice() {
 		price = weight*material.getPrice();
 		return price;
 	}
 
 	@Override
-	public float calcVolume() {
+	protected float calcVolume() {
 		volume = length*height*thickness;
 		return volume;
 	}
 
 	@Override
-	public float calcWeight() {
-		weight = volume*material.getDensity();
+	protected float calcWeight() {
+		if(material != null) {
+			weight = volume*material.getDensity();	
+		}
 		return weight;
 	}
 

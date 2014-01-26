@@ -3,7 +3,7 @@ package ru.lks.dacha;
 public class Walls extends Building {
 
 	@Override
-	public float calcPrice() {
+	protected float calcPrice() {
 		for(Building unit : houseUnits){
 			price += unit.calcPrice();
 		}
@@ -11,7 +11,7 @@ public class Walls extends Building {
 	}
 
 	@Override
-	public float calcVolume() {
+	protected float calcVolume() {
 		for(Building unit : houseUnits){
 			volume += unit.calcVolume();
 		}
@@ -19,7 +19,7 @@ public class Walls extends Building {
 	}
 
 	@Override
-	public float calcWeight() {
+	protected float calcWeight() {
 		for(Building unit : houseUnits){
 			weight += unit.calcWeight();
 		}

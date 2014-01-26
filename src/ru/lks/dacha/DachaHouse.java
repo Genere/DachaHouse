@@ -7,19 +7,16 @@ public class DachaHouse extends Building {
 	}
 
 	@Override
-	public float calcPrice() {
-		
+	protected float calcPrice() {
 		price = 0;
-		
 		for(Building unit : houseUnits){
 			price += unit.calcPrice();
 		}
-		
 		return price;
 	}
 
 	@Override
-	public float calcVolume() {
+	protected float calcVolume() {
 		for(Building unit : houseUnits){
 			volume += unit.calcVolume();
 		}
@@ -27,10 +24,9 @@ public class DachaHouse extends Building {
 	}
 
 	@Override
-	public float calcWeight() {
+	protected float calcWeight() {
 		for(Building unit : houseUnits){
-			unit.calcWeight();
-			weight += unit.weight;
+			weight += unit.calcWeight();
 		}
 		return weight;
 	}
