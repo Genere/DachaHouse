@@ -25,6 +25,10 @@ public abstract class Building {
 	protected float volume;//объем
 
 	
+	public float getVolume() {
+		return volume;
+	}
+
 	protected float price;
 	
 	protected List<Building> houseUnits = new ArrayList<Building>();
@@ -55,7 +59,13 @@ public abstract class Building {
 		calcWeight();
 		calcPrice();
 	}
-	
+	/**
+	 * конструктор принимает длину, толщину, высоту и материал конструкции
+	 * @param length
+	 * @param thickness
+	 * @param height
+	 * @param material
+	 */
 	public Building(float length, float thickness, float height, Material material) {
 		this.length = length;
 		this.height = height;
@@ -67,8 +77,9 @@ public abstract class Building {
 		calcPrice();
 	}
 
-	public Building(Square square, Material material) {
+	public Building(Square square, float thickness, Material material) {
 		this.square = square;
+		this.thickness = thickness;
 		this.material = material;
 		calcVolume();
 		calcWeight();

@@ -15,13 +15,14 @@ public class Cement extends Material{
 	 */
 	public Cement(float density, float price) {
 		super(density, price);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
-	public void calcPrice() {
-		// TODO Auto-generated method stub
-		price = 10;
+	public float calcPrice() {
+//		return price = 10;
+		return price;
 	}
+
 	
 }

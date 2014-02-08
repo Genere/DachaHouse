@@ -1,29 +1,11 @@
 package ru.lks.dacha;
 
-public class Walls extends Building {
+public class Walls extends CompositeBuilding {
 
-	@Override
-	protected float calcPrice() {
-		for(Building unit : houseUnits){
-			price += unit.calcPrice();
-		}
-		return price;
+	public Walls() {
+		super();
 	}
 
-	@Override
-	protected float calcVolume() {
-		for(Building unit : houseUnits){
-			volume += unit.calcVolume();
-		}
-		return volume;
-	}
 
-	@Override
-	protected float calcWeight() {
-		for(Building unit : houseUnits){
-			weight += unit.calcWeight();
-		}
-		return weight;
-	}
 
 }

@@ -1,32 +1,18 @@
 package ru.lks.dacha;
 
 import ru.lks.dacha.materials.Cement;
+import ru.lks.dacha.materials.Material;
 
-public class Floor extends Building {
+public class Floor extends PlainBuilding {
 	
 
-	public Floor(Square square){
-		super(square, new Cement(10,10));
+	public Floor(Square square, float thickness, Material material){
+		super(square, thickness, material);
 	}
-
-	@Override
-	protected float calcPrice() {
-		// TODO Auto-generated method stub
-		return price;
-	}
-
+	
 	@Override
 	protected float calcVolume() {
-		volume = length*height*thickness;
+		volume = square.getSquare()*thickness;
 		return volume;
 	}
-
-	@Override
-	protected float calcWeight() {
-		if(material != null) {
-			weight = volume*material.getDensity();	
-		}
-		return weight;
-	}
-
 }

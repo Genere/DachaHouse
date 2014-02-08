@@ -12,6 +12,10 @@ public class Square {
 	private float length;
 	private float square;
 	
+	public float getSquare() {
+		return square;
+	}
+
 	/**
 	 * конструктор. для инициализации используется площадь в м2
 	 * @param square
@@ -25,8 +29,8 @@ public class Square {
 	 * @param width
 	 * @param lenght
 	 */
-	public Square (float width, float lenght){
-		square = width*lenght;
+	public Square (float width, float length){
+		square = width*length;
 	}
 
 }
