@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+<bean id="house" class="ru.lks.dacha.DachaHouse">
+	<constructor-arg>
+		<bean class="ru.lks.dacha.Square">
+			<constructor-arg value="9"/>
+			<constructor-arg value="10"/>
+		</bean>
+	</constructor-arg>
+	<property name="houseUnits">
+		<list>
+			<ref bean="found"/>
+			<ref bean="outWalls"/>
+			<ref bean="floor1"/>
+			<ref bean="floor2"/>
+		</list>
+	</property>
+</bean>
+
+<!-- Подготовка материалов -->
+<bean id="cement" class="ru.lks.dacha.materials.Cement">
+	<constructor-arg value="1000"/>
+	<constructor-arg value="6"/>
+</bean>
+
+<bean id="breack" class="ru.lks.dacha.materials.Breack">
+	<constructor-arg value="2000"/>
+	<constructor-arg value="2"/>
+</bean>
+
+<bean id="cilicatBreack" class="ru.lks.dacha.materials.Breack">
+	<constructor-arg value="500"/>
+	<constructor-arg value="6.5"/>
+</bean>
+
+<alias name="cilicatBreack" alias="wallMaterial"/>
+
+<!-- Построение фундамента -->
+
+<bean id="found" class="ru.lks.dacha.Foundation">
+	<constructor-arg value="43"/>
+	<constructor-arg value="0.4"/>
+	<constructor-arg value="1.2"/>
+	<constructor-arg ref="cement"/>
+</bean>
+
+<!-- Построение внешних стен -->
+
+<bean id="outWalls" class="ru.lks.dacha.Walls" >
+	<property name="houseUnits">
+		<list>
+		<!-- 	Первый этаж -->
+			<bean class="ru.lks.dacha.Wall">
+				<constructor-arg value="10"/>
+				<constructor-arg value="0.4"/>
+				<constructor-arg value="2.8"/>
+				<constructor-arg ref="wallMaterial"/>
+			</bean>
+			<bean class="ru.lks.dacha.Wall">
+				<constructor-arg value="10"/>
+				<constructor-arg value="0.4"/>
+				<constructor-arg value="2.8"/>
+				<constructor-arg ref="wallMaterial"/>
+			</bean>
+			<bean class="ru.lks.dacha.Wall">
+				<constructor-arg value="10"/>
+				<constructor-arg value="0.4"/>
+				<constructor-arg value="2.8"/>
+				<constructor-arg ref="wallMaterial"/>
+			</bean>
+			<bean class="ru.lks.dacha.Wall">
+				<constructor-arg value="10"/>
+				<constructor-arg value="0.4"/>
+				<constructor-arg value="2.8"/>
+				<constructor-arg ref="wallMaterial"/>
+			</bean>
+			<!-- 	Второй этаж -->
+			<bean class="ru.lks.dacha.Wall">
+				<constructor-arg value="10"/>
+				<constructor-arg value="0.4"/>
+				<constructor-arg value="2.8"/>
+				<constructor-arg ref="wallMaterial"/>
+			</bean>
+			<bean class="ru.lks.dacha.Wall">
+				<constructor-arg value="10"/>
+				<constructor-arg value="0.4"/>
+				<constructor-arg value="2.8"/>
+				<constructor-arg ref="wallMaterial"/>
+			</bean>
+			<bean class="ru.lks.dacha.Wall">
+				<constructor-arg value="10"/>
+				<constructor-arg value="0.4"/>
+				<constructor-arg value="2.8"/>
+				<constructor-arg ref="wallMaterial"/>
+			</bean>
+			<bean class="ru.lks.dacha.Wall">
+				<constructor-arg value="10"/>
+				<constructor-arg value="0.4"/>
+				<constructor-arg value="2.8"/>
+				<constructor-arg ref="wallMaterial"/>
+			</bean>
+		</list>
+	</property>
+</bean>
+
+<!-- Построение перекрытий --> 
+
+<!-- 	Первый этаж -->
+<bean id="floor1" class="ru.lks.dacha.Floor">
+	<constructor-arg>
+		<bean class="ru.lks.dacha.Square">
+			<constructor-arg value="9"/>
+			<constructor-arg value="10"/>
+		</bean>
+	</constructor-arg>
+	<constructor-arg value="0.2"/>
+	<constructor-arg ref="cement"/>
+</bean>
+	
+<!-- 	Второй этаж -->
+
+<bean id="floor2" class="ru.lks.dacha.Floor">
+	<constructor-arg>
+		<bean class="ru.lks.dacha.Square">
+			<constructor-arg value="9"/>
+			<constructor-arg value="10"/>
+		</bean>
+	</constructor-arg>
+	<constructor-arg value="0.2"/>
+	<constructor-arg ref="cement"/>
+</bean>
+
+</beans>
+

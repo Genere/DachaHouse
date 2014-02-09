@@ -1,23 +1,21 @@
 package ru.lks.dacha.materials;
 
-import ru.lks.dacha.Building;
-
-public class Breack extends Material {
-
+public class SilicatBreack extends Material {
+	
 	/**
 	 * конструктор принимает плотность и цену кирпича за кг
 	 * @param density
 	 * @param price
 	 */
-	public Breack(float density, float price) {
+	public SilicatBreack(float density, float price) {
 		super(density, price);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public float calcPrice() {
+		// TODO Auto-generated method stub
 		return price;
-
 	}
 
 }
